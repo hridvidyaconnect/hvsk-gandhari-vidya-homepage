@@ -65,36 +65,46 @@ const Header = () => {
               </span>
             </a>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center gap-8">
-              {navLinks.map((link) => (
-                <button
+            {/* Desktop Navigation - Fade in when scrolled */}
+            <nav className={`hidden lg:flex items-center gap-8 transition-all duration-700 ease-out ${isScrolled ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"}`}>
+              {navLinks.map((link, index) => (
+                <motion.button
                   key={link.href}
                   onClick={() => scrollToSection(link.href)}
-                  className={`text-base font-medium transition-colors hover:text-accent ${isScrolled ? "text-foreground" : "text-primary-foreground"
-                    }`}
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={isScrolled ? { opacity: 1, y: 0 } : { opacity: 0, y: -10 }}
+                  transition={{ duration: 0.5, delay: index * 0.05 }}
+                  className="text-base font-medium text-foreground transition-colors hover:text-accent"
                 >
                   {link.label}
-                </button>
+                </motion.button>
               ))}
             </nav>
 
-            {/* CTA Button */}
-            <div className="hidden lg:block">
+            {/* CTA Button - Fade in when scrolled */}
+            <motion.div 
+              className="hidden lg:block"
+              initial={{ opacity: 0, y: -10 }}
+              animate={isScrolled ? { opacity: 1, y: 0 } : { opacity: 0, y: -10 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
               <Button variant="gold" size="default" asChild>
                 <a href={formLinks.enrollment} target="_blank" rel="noopener noreferrer">
                   Enroll Now
                 </a>
               </Button>
-            </div>
+            </motion.div>
 
-            {/* Mobile Menu Button */}
-            <button
+            {/* Mobile Menu Button - Only visible when scrolled */}
+            <motion.button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`lg:hidden p-2 ${isScrolled ? "text-foreground" : "text-primary-foreground"}`}
+              initial={{ opacity: 0, y: -10 }}
+              animate={isScrolled ? { opacity: 1, y: 0 } : { opacity: 0, y: -10 }}
+              transition={{ duration: 0.5 }}
+              className={`lg:hidden p-2 ${isScrolled ? "text-foreground" : "pointer-events-none text-primary-foreground"}`}
             >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
+            </motion.button>
           </div>
         </div>
       </motion.header>

@@ -5,11 +5,30 @@ import logoImage from "@/assets/logo.png";
 import ActionCard from "@/components/ActionCard";
 import { workshopDetails } from "@/config/workshopData";
 
+const navLinks = [
+  { label: "About", href: "#about" },
+  { label: "Gandhari Vidya", href: "#gandhari-vidya" },
+  { label: "Benefits", href: "#benefits" },
+  { label: "Guide", href: "#founder" },
+  { label: "FAQs", href: "#faq" },
+];
+
 const HeroSection = () => {
   const { scrollY } = useScroll();
   const logoOpacity = useTransform(scrollY, [0, 200], [1, 0]);
   const logoScale = useTransform(scrollY, [0, 200], [1, 0.8]);
   const logoY = useTransform(scrollY, [0, 200], [0, -20]);
+  
+  // Animation values for nav links - fade out as user scrolls
+  const navOpacity = useTransform(scrollY, [50, 200], [1, 0]);
+  const navY = useTransform(scrollY, [50, 200], [0, -80]);
+  
+  const scrollToSection = (href: string) => {
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
@@ -83,6 +102,22 @@ const HeroSection = () => {
                   </span>
                 </div>
               </div>
+
+              {/* Navigation Links - Initially visible, animate to navbar on scroll */}
+              <motion.nav
+                style={{ opacity: navOpacity, y: navY }}
+                className="flex flex-wrap gap-4 lg:gap-6 pt-6"
+              >
+                {navLinks.map((link) => (
+                  <button
+                    key={link.href}
+                    onClick={() => scrollToSection(link.href)}
+                    className="text-primary-foreground/90 hover:text-accent font-medium text-sm lg:text-base transition-colors"
+                  >
+                    {link.label}
+                  </button>
+                ))}
+              </motion.nav>
             </motion.div>
 
             {/* Right Column: Unified Action Card */}
