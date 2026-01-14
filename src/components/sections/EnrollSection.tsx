@@ -1,8 +1,7 @@
 import { motion } from "framer-motion";
-import { MapPin, Calendar, Clock, Users } from "lucide-react";
+import { Calendar, Clock, Users } from "lucide-react";
 import EnrollButton from "@/components/EnrollButton";
 import BatchInfo from "@/components/BatchInfo";
-import locationImage from "@/assets/ssth-location.jpg";
 import { workshopDetails } from "@/config/workshopData";
 
 const EnrollSection = () => {
@@ -43,7 +42,7 @@ const EnrollSection = () => {
             className="bg-primary-foreground/10 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-primary-foreground/20"
           >
             {/* Workshop Details */}
-            <div className="grid md:grid-cols-3 gap-6 mb-10">
+            <div className="grid md:grid-cols-3 gap-6 mb-8">
               <div className="flex items-center gap-4 text-white">
                 <div className="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center">
                   <Calendar className="w-6 h-6 text-accent" />
@@ -73,31 +72,9 @@ const EnrollSection = () => {
               </div>
             </div>
 
-            {/* Batch Info */}
+            {/* Batch Information */}
             <div className="mb-10">
-              <BatchInfo variant="dark" />
-            </div>
-
-            {/* Location */}
-            <div className="flex flex-col md:flex-row items-start gap-6 p-6 bg-white/10 rounded-2xl border border-white/20 mb-10">
-              <img
-                src={locationImage}
-                alt="Shivaratnapuri Temple of Health"
-                className="w-full md:w-48 h-32 object-cover rounded-xl shadow-lg"
-              />
-              <div className="flex-1">
-                <div className="flex items-center gap-2 text-accent mb-2">
-                  <MapPin className="w-5 h-5" />
-                  <span className="font-semibold text-lg">Workshop Location</span>
-                </div>
-                <p className="text-white/90 mb-2">
-                  {workshopDetails.location}
-                </p>
-                <p className="text-white/70 text-sm">
-                  The sacred pyramid temple provides the perfect environment for
-                  spiritual growth and intuitive awakening.
-                </p>
-              </div>
+              <BatchInfo variant="dark" showTitle={true} />
             </div>
 
             {/* CTA */}

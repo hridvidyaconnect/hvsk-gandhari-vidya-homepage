@@ -3,7 +3,6 @@ import {
   Eye, BookOpen, Heart, Users, Brain, 
   Palette, Hash, BookText, Move, Zap, Focus 
 } from "lucide-react";
-import CTASection from "@/components/CTASection";
 
 const capabilities = [
   { icon: Palette, text: "Identify colors" },
@@ -121,9 +120,6 @@ const GandhariVidyaSection = () => {
             </div>
           </motion.div>
         </div>
-
-        {/* CTA */}
-        <CTASection showBatches={true} />
       </div>
     </section>
   );

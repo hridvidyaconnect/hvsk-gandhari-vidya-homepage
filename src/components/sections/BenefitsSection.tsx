@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { Brain, Sparkles, Heart, Zap } from "lucide-react";
-import CTASection from "@/components/CTASection";
 
 const benefitCategories = [
   {
@@ -113,9 +112,6 @@ const BenefitsSection = () => {
             </motion.div>
           ))}
         </div>
-
-        {/* CTA */}
-        <CTASection showBatches={true} />
       </div>
     </section>
   );
