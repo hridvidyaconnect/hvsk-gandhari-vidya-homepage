@@ -17,7 +17,7 @@ const buttonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline",
         // Custom spiritual theme variants
         gold: "bg-accent text-accent-foreground hover:brightness-110 shadow-glow font-semibold tracking-wide",
-        hero: "bg-accent text-accent-foreground font-bold tracking-wider uppercase shadow-lg hover:shadow-glow hover:scale-105 transform",
+        hero: "bg-accent text-accent-foreground font-bold tracking-wider uppercase shadow-xl hover:shadow-glow hover:scale-105 transform border-2 border-transparent hover:border-gold-light transition-all duration-300",
         purple: "bg-primary text-primary-foreground hover:bg-purple-dark shadow-purple font-semibold",
         "outline-gold": "border-2 border-accent text-accent bg-transparent hover:bg-accent/10 font-semibold",
         "outline-light": "border-2 border-primary-foreground/50 text-primary-foreground bg-transparent hover:bg-primary-foreground/10 font-medium",
@@ -41,7 +41,7 @@ const buttonVariants = cva(
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
+  VariantProps<typeof buttonVariants> {
   asChild?: boolean;
 }
 

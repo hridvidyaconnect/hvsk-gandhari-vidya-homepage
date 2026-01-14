@@ -38,11 +38,10 @@ const Header = () => {
       <motion.header
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled
-            ? "bg-background/95 backdrop-blur-md shadow-soft"
-            : "bg-transparent"
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+          ? "bg-background/95 backdrop-blur-md shadow-soft"
+          : "bg-transparent"
+          }`}
       >
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-20">
@@ -53,15 +52,16 @@ const Header = () => {
                 e.preventDefault();
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }}
-              className="flex items-center gap-3"
+              className={`flex items-center gap-3 transition-all duration-500 ${isScrolled ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"
+                }`}
             >
-              <img 
-                src={logoImage} 
-                alt="Hrid Vidya Samskriti Kendra Logo" 
+              <img
+                src={logoImage}
+                alt="Hrid Vidya Samskriti Kendra Logo"
                 className="w-10 h-10 sm:w-14 sm:h-14 object-contain"
               />
               <span className={`font-display text-base sm:text-lg font-semibold hidden sm:block ${isScrolled ? "text-foreground" : "text-primary-foreground"}`}>
-                Hrid Vidya
+                Hrid Vidya Samskriti Kendra
               </span>
             </a>
 
@@ -71,9 +71,8 @@ const Header = () => {
                 <button
                   key={link.href}
                   onClick={() => scrollToSection(link.href)}
-                  className={`text-base font-medium transition-colors hover:text-accent ${
-                    isScrolled ? "text-foreground" : "text-primary-foreground"
-                  }`}
+                  className={`text-base font-medium transition-colors hover:text-accent ${isScrolled ? "text-foreground" : "text-primary-foreground"
+                    }`}
                 >
                   {link.label}
                 </button>

@@ -7,7 +7,7 @@ import { workshopDetails } from "@/config/workshopData";
 
 const EnrollSection = () => {
   return (
-    <section id="enroll" className="py-24 bg-gradient-to-b from-primary to-teal-dark relative overflow-hidden">
+    <section id="enroll" className="py-24 bg-gradient-to-b from-purple to-purple-dark text-white relative overflow-hidden">
       {/* Decorative Elements */}
       <div className="absolute top-0 left-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
       <div className="absolute bottom-0 right-0 w-80 h-80 bg-primary-foreground/5 rounded-full blur-3xl" />
@@ -25,11 +25,11 @@ const EnrollSection = () => {
             <span className="text-accent font-medium tracking-widest uppercase text-sm">
               Take the First Step
             </span>
-            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mt-2 mb-4">
+            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-2 mb-4">
               Enroll Your Child Today
             </h2>
-            <p className="text-primary-foreground/80 text-lg max-w-2xl mx-auto">
-              Give your child the gift of inner vision and intuitive awareness. 
+            <p className="text-white/90 text-lg max-w-2xl mx-auto">
+              Give your child the gift of inner vision and intuitive awareness.
               Limited seats available for each batch.
             </p>
           </motion.div>
@@ -44,30 +44,30 @@ const EnrollSection = () => {
           >
             {/* Workshop Details */}
             <div className="grid md:grid-cols-3 gap-6 mb-10">
-              <div className="flex items-center gap-4 text-primary-foreground">
+              <div className="flex items-center gap-4 text-white">
                 <div className="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center">
                   <Calendar className="w-6 h-6 text-accent" />
                 </div>
                 <div>
-                  <p className="text-sm text-primary-foreground/70">Format</p>
+                  <p className="text-sm text-white/70">Format</p>
                   <p className="font-medium">{workshopDetails.format}</p>
                 </div>
               </div>
-              <div className="flex items-center gap-4 text-primary-foreground">
+              <div className="flex items-center gap-4 text-white">
                 <div className="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center">
                   <Users className="w-6 h-6 text-accent" />
                 </div>
                 <div>
-                  <p className="text-sm text-primary-foreground/70">Age Group</p>
+                  <p className="text-sm text-white/70">Age Group</p>
                   <p className="font-medium">{workshopDetails.ageGroup}</p>
                 </div>
               </div>
-              <div className="flex items-center gap-4 text-primary-foreground">
+              <div className="flex items-center gap-4 text-white">
                 <div className="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center">
                   <Clock className="w-6 h-6 text-accent" />
                 </div>
                 <div>
-                  <p className="text-sm text-primary-foreground/70">Duration</p>
+                  <p className="text-sm text-white/70">Duration</p>
                   <p className="font-medium">8 Days (Weekends)</p>
                 </div>
               </div>
@@ -79,7 +79,7 @@ const EnrollSection = () => {
             </div>
 
             {/* Location */}
-            <div className="flex flex-col md:flex-row items-start gap-6 p-6 bg-primary-foreground/5 rounded-2xl border border-primary-foreground/10 mb-10">
+            <div className="flex flex-col md:flex-row items-start gap-6 p-6 bg-white/10 rounded-2xl border border-white/20 mb-10">
               <img
                 src={locationImage}
                 alt="Shivaratnapuri Temple of Health"
@@ -90,11 +90,11 @@ const EnrollSection = () => {
                   <MapPin className="w-5 h-5" />
                   <span className="font-semibold text-lg">Workshop Location</span>
                 </div>
-                <p className="text-primary-foreground/90 mb-2">
+                <p className="text-white/90 mb-2">
                   {workshopDetails.location}
                 </p>
-                <p className="text-primary-foreground/70 text-sm">
-                  The sacred pyramid temple provides the perfect environment for 
+                <p className="text-white/70 text-sm">
+                  The sacred pyramid temple provides the perfect environment for
                   spiritual growth and intuitive awakening.
                 </p>
               </div>
@@ -102,12 +102,12 @@ const EnrollSection = () => {
 
             {/* CTA */}
             <div className="text-center">
-              <EnrollButton 
-                variant="hero" 
-                size="xl" 
+              <EnrollButton
+                variant="hero"
+                size="xl"
                 text="Enroll Now & Reserve Your Seat"
               />
-              <p className="text-primary-foreground/60 text-sm mt-4">
+              <p className="text-white/60 text-sm mt-4">
                 After registration, you can choose your preferred batch and complete payment
               </p>
             </div>
