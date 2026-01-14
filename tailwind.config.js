@@ -14,11 +14,11 @@ export default {
                 "2xl": "1400px",
             },
         },
+        fontFamily: {
+            display: ["Outfit", "system-ui", "sans-serif"],
+            sans: ['"Source Sans 3"', "system-ui", "sans-serif"],
+        },
         extend: {
-            fontFamily: {
-                display: ["Outfit", "system-ui", "sans-serif"],
-                sans: ["Source Sans 3", "system-ui", "sans-serif"],
-            },
             fontSize: {
                 'xs': ['0.8125rem', { lineHeight: '1.5' }],
                 'sm': ['0.9375rem', { lineHeight: '1.6' }],
