@@ -1,0 +1,144 @@
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { formLinks } from "@/config/workshopData";
+import logoImage from "@/assets/logo.png";
+
+const navLinks = [
+  { label: "About", href: "#about" },
+  { label: "Gandhari Vidya", href: "#gandhari-vidya" },
+  { label: "Benefits", href: "#benefits" },
+  { label: "Guide", href: "#founder" },
+  { label: "FAQs", href: "#faq" },
+];
+
+const Header = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToSection = (href: string) => {
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+    setIsMobileMenuOpen(false);
+  };
+
+  return (
+    <>
+      <motion.header
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          isScrolled
+            ? "bg-background/95 backdrop-blur-md shadow-soft"
+            : "bg-transparent"
+        }`}
+      >
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between h-20">
+            {/* Logo */}
+            <a
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+              className="flex items-center gap-3"
+            >
+              <img 
+                src={logoImage} 
+                alt="Hrid Vidya Samskriti Kendra Logo" 
+                className="w-10 h-10 sm:w-14 sm:h-14 object-contain"
+              />
+              <span className={`font-display text-base sm:text-lg font-semibold hidden sm:block ${isScrolled ? "text-foreground" : "text-primary-foreground"}`}>
+                Hrid Vidya
+              </span>
+            </a>
+
+            {/* Desktop Navigation */}
+            <nav className="hidden lg:flex items-center gap-8">
+              {navLinks.map((link) => (
+                <button
+                  key={link.href}
+                  onClick={() => scrollToSection(link.href)}
+                  className={`text-base font-medium transition-colors hover:text-accent ${
+                    isScrolled ? "text-foreground" : "text-primary-foreground"
+                  }`}
+                >
+                  {link.label}
+                </button>
+              ))}
+            </nav>
+
+            {/* CTA Button */}
+            <div className="hidden lg:block">
+              <Button variant="gold" size="default" asChild>
+                <a href={formLinks.enrollment} target="_blank" rel="noopener noreferrer">
+                  Enroll Now
+                </a>
+              </Button>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className={`lg:hidden p-2 ${isScrolled ? "text-foreground" : "text-primary-foreground"}`}
+            >
+              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
+        </div>
+      </motion.header>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="fixed inset-0 z-40 lg:hidden"
+          >
+            <div className="absolute inset-0 bg-foreground/20 backdrop-blur-sm" onClick={() => setIsMobileMenuOpen(false)} />
+            <motion.nav
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "tween" }}
+              className="absolute top-0 right-0 h-full w-80 bg-background shadow-2xl p-8 pt-24"
+            >
+              <div className="flex flex-col gap-4">
+                {navLinks.map((link) => (
+                  <button
+                    key={link.href}
+                    onClick={() => scrollToSection(link.href)}
+                    className="text-left text-lg font-medium text-foreground hover:text-primary py-2 border-b border-border"
+                  >
+                    {link.label}
+                  </button>
+                ))}
+                <Button variant="gold" size="lg" className="mt-4" asChild>
+                  <a href={formLinks.enrollment} target="_blank" rel="noopener noreferrer">
+                    Enroll Now
+                  </a>
+                </Button>
+              </div>
+            </motion.nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  );
+};
+
+export default Header;
