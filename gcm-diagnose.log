@@ -1,0 +1,165 @@
+﻿Diagnose log at 2026-01-14T14:40:34Z
+
+AppPath: /usr/local/bin/git-credential-manager
+InstallDir: /usr/local/share/gcm-core/
+Version: 2.6.1+786ab03440ddc82e807a97c0e540f5247e44cec6
+
+------------
+Diagnostic: Environment
+Skipped: False
+Success: True
+Exception: None
+Log:
+OSType: macOS
+OSVersion: 15.6.0
+Reading environment variables... OK
+ Variables:
+LANG=en_US.UTF-8
+OLDPWD=/Users/aditya/Programming/hvsk-gandhari-vidya-homepage
+TERM_PROGRAM=vscode
+NVM_CD_FLAGS=-q
+SHELL=/bin/zsh
+USER_ZDOTDIR=/Users/aditya
+LOGNAME=aditya
+GIT_TRACE2_PARENT_SID=ea539296-2f62-4c1c-9297-66e58f9a804d
+ANTIGRAVITY_CLI_ALIAS=agy
+TERM=xterm-256color
+NVM_BIN=/Users/aditya/.nvm/versions/node/v22.18.0/bin
+TMPDIR=/var/folders/2_/ljs84ghd65n1z0ldz_1h2zzw0000gn/T/
+SDKROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk
+NVM_DIR=/Users/aditya/.nvm
+MANPATH=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/share/man:/Library/Developer/CommandLineTools/usr/share/man:/Library/Developer/CommandLineTools/Toolchains/XcodeDefault.xctoolchain/usr/share/man:
+_=/usr/bin/git
+GIT_ASKPASS=/Applications/Antigravity.app/Contents/Resources/app/extensions/git/dist/askpass.sh
+GIT_EXEC_PATH=/Library/Developer/CommandLineTools/usr/libexec/git-core
+COLORTERM=truecolor
+CPATH=/usr/local/include
+__CFBundleIdentifier=com.google.antigravity
+MallocNanoZone=0
+LIBRARY_PATH=/usr/local/lib
+VSCODE_INJECTION=1
+ZDOTDIR=/Users/aditya
+VSCODE_GIT_ASKPASS_NODE=/Applications/Antigravity.app/Contents/Frameworks/Antigravity Helper (Plugin).app/Contents/MacOS/Antigravity Helper (Plugin)
+TERM_PROGRAM_VERSION=1.104.0
+ORIGINAL_XDG_CURRENT_DESKTOP=undefined
+XPC_SERVICE_NAME=0
+SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.gdzkrHOyUX/Listeners
+NVM_INC=/Users/aditya/.nvm/versions/node/v22.18.0/include/node
+JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-25.jdk/Contents/Home
+VSCODE_PROFILE_INITIALIZED=1
+USER=aditya
+PATH=/Library/Developer/CommandLineTools/usr/libexec/git-core:/Users/aditya/.antigravity/antigravity/bin:/Users/aditya/.nvm/versions/node/v22.18.0/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Applications/VMware Fusion.app/Contents/Public:/opt/homebrew/bin:/Users/aditya/.antigravity/antigravity/bin:/Users/aditya/.nvm/versions/node/v22.18.0/bin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin
+PWD=/Users/aditya/Programming/hvsk-gandhari-vidya-homepage
+SHLVL=1
+XPC_FLAGS=0x0
+VSCODE_PYTHON_AUTOACTIVATE_GUARD=1
+VSCODE_GIT_ASKPASS_MAIN=/Applications/Antigravity.app/Contents/Resources/app/extensions/git/dist/askpass-main.js
+VSCODE_GIT_ASKPASS_EXTRA_ARGS=
+COMMAND_MODE=unix2003
+VSCODE_GIT_IPC_HANDLE=/var/folders/2_/ljs84ghd65n1z0ldz_1h2zzw0000gn/T/vscode-git-fbbf85754e.sock
+__CF_USER_TEXT_ENCODING=0x1F5:0x0:0x0
+HOME=/Users/aditya
+
+
+------------
+Diagnostic: File system
+Skipped: False
+Success: True
+Exception: None
+Log:
+Temporary directory is '/var/folders/2_/ljs84ghd65n1z0ldz_1h2zzw0000gn/T/'...
+Checking basic file I/O...
+Writing to temporary file '/var/folders/2_/ljs84ghd65n1z0ldz_1h2zzw0000gn/T/45104e2782e8af7ac5b47934'... OK
+Reading from temporary file '/var/folders/2_/ljs84ghd65n1z0ldz_1h2zzw0000gn/T/45104e2782e8af7ac5b47934'... OK
+Deleting temporary file '/var/folders/2_/ljs84ghd65n1z0ldz_1h2zzw0000gn/T/45104e2782e8af7ac5b47934'... OK
+Testing IFileSystem instance...
+UserHomePath: /Users/aditya
+UserDataDirectoryPath: /Users/aditya/.gcm
+GetCurrentDirectory(): /Users/aditya/Programming/hvsk-gandhari-vidya-homepage
+
+------------
+Diagnostic: Networking
+Skipped: False
+Success: True
+Exception: None
+Log:
+Checking networking and HTTP stack...
+Creating HTTP client... OK
+IsNetworkAvailable: True
+Sending HEAD request to http://example.com...Sending HEAD request to https://example.com... OK
+ OK
+Acquiring free TCP port... OK
+Testing local HTTP loopback connections...
+Creating new HTTP listener for http://localhost:54997/... OK
+Waiting for loopback connection... OK
+Writing response... OK
+Waiting for response data... OK
+Loopback connection data OK
+
+------------
+Diagnostic: Git
+Skipped: False
+Success: True
+Exception: None
+Log:
+Getting Git version... OK
+Git version is '2.39.5 (Apple Git-154)'
+Locating current repository...Git repository at '/Users/aditya/Programming/hvsk-gandhari-vidya-homepage/.git'
+ OK
+Listing all Git configuration... OK
+Git configuration:
+file:/Library/Developer/CommandLineTools/usr/share/git-core/gitconfig	credential.helper=osxkeychain
+file:/Library/Developer/CommandLineTools/usr/share/git-core/gitconfig	init.defaultbranch=main
+file:/Users/aditya/.gitconfig	user.name=hridvidyaconnect
+file:/Users/aditya/.gitconfig	user.email=perceptionsconnect@gmail.com
+file:/Users/aditya/.gitconfig	credential.helper=osxkeychain
+file:/Users/aditya/.gitconfig	credential.helper=
+file:/Users/aditya/.gitconfig	credential.helper=/usr/local/bin/git-credential-manager
+file:/Users/aditya/.gitconfig	credential.https://dev.azure.com.usehttppath=true
+file:.git/config	core.repositoryformatversion=0
+file:.git/config	core.filemode=true
+file:.git/config	core.bare=false
+file:.git/config	core.logallrefupdates=true
+file:.git/config	core.ignorecase=true
+file:.git/config	core.precomposeunicode=true
+file:.git/config	remote.origin.url=https://hridvidyaconnect@github.com/hridvidyaconnect/hvsk-gandhari-vidya-homepage.git
+file:.git/config	remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
+
+
+------------
+Diagnostic: Credential storage
+Skipped: False
+Success: True
+Exception: None
+Log:
+ICredentialStore instance is of type: CredentialStore
+Writing test credential... OK
+Reading test credential... OK
+Deleting test credential... OK
+
+------------
+Diagnostic: Microsoft authentication (AAD/MSA)
+Skipped: False
+Success: True
+Exception: None
+Log:
+Broker is not enabled.
+Flow type is: Auto
+Gathering MSAL token cache data... OK
+CacheDirectory: /Users/aditya/.local/.IdentityService
+CacheFileName: msal.cache
+CacheFilePath: /Users/aditya/.local/.IdentityService/msal.cache
+MacKeyChainAccountName: MSALCache
+MacKeyChainServiceName: Microsoft.Developer.IdentityService
+Creating cache helper... OK
+Verifying MSAL token cache persistence... OK
+
+------------
+Diagnostic: GitHub API
+Skipped: False
+Success: True
+Exception: None
+Log:
+Using 'https://github.com/' as API target.
+Querying '/meta' endpoint... OK
+
