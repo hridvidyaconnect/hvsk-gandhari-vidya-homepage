@@ -61,12 +61,6 @@ const AboutSection = () => {
               <span className="font-semibold text-accent"> Gandhari Vidya</span>, a powerful tool 
               on the path of Raja Vidya.
             </p>
-
-            <p className="text-muted-foreground leading-relaxed">
-              Founded by <span className="font-semibold">Sowmya K T</span>, a dedicated Mentor 
-              and Guide on the path of intuitive awakening, this center operates in the vicinity 
-              of Shri Rajarajeshwari Temple, Rajarajeshwari Nagar, Bengaluru.
-            </p>
           </motion.div>
         </motion.div>
       </div>
