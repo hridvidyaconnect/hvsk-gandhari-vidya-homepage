@@ -3,10 +3,10 @@ import { Award, Music, BookOpen, Target, Users } from "lucide-react";
 import sowmyaProfile from "@/assets/sowmya-profile.jpg";
 
 const credentials = [
-  { icon: BookOpen, text: "Double-degree holder in Electronics & GNIIT with Master's in IT" },
-  { icon: Music, text: "Certified Carnatic vocalist with Master's in Music from University of Madras" },
-  { icon: Users, text: "17+ years nurturing young minds through Carnatic music training" },
+  // { icon: BookOpen, text: "B.E. in Electronics & GNIIT with Master's in IT" },
   { icon: Award, text: "Certified Gandhari Vidya trainer, blessed by her Guru to carry forward this lineage" },
+  { icon: Music, text: "Certified Carnatic vocalist" },
+  { icon: Users, text: "17+ years nurturing young minds through Carnatic music training" },
   { icon: Target, text: "Trained under various Gurus in Spirituality, Acupressure, Yoga & healing sciences" },
 ];
 

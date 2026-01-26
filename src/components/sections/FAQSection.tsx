@@ -25,7 +25,7 @@ const faqs = [
   },
   {
     question: "Will my child be able to demonstrate results in 8 weeks?",
-    answer: "Most children show intuitive responses within 4–6 sessions. The final weekend includes a demonstration. Intuitive abilities, depth of understanding and practice vary from child to child.",
+    answer: "Most children show intuitive responses within 4–6 sessions and with consistent practice. The final weekend includes a demonstration. Intuitive abilities, depth of understanding and practice vary from child to child.",
   },
   {
     question: "Why should one not practice without blindfold? What is the effect?",

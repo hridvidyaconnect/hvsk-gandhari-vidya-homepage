@@ -1,5 +1,5 @@
 import { workshopBatches } from "@/config/workshopData";
-import { Calendar, Clock } from "lucide-react";
+import { Calendar, Clock, Info } from "lucide-react";
 
 interface BatchInfoProps {
   variant?: "light" | "dark" | "card";
@@ -10,6 +10,9 @@ const BatchInfo = ({ variant = "light", showTitle = true }: BatchInfoProps) => {
   const textColor = variant === "dark" ? "text-primary-foreground" : "text-foreground";
   const mutedColor = variant === "dark" ? "text-primary-foreground/80" : "text-muted-foreground";
   const bgColor = variant === "card" ? "bg-card shadow-card" : "";
+
+  // Check if batch is completed (batch-1 is completed)
+  const isCompleted = (batchId: string) => batchId === "batch-1";
 
   return (
     <div className={`space-y-4 ${bgColor} ${variant === "card" ? "p-6 rounded-xl" : ""}`}>
@@ -22,15 +25,25 @@ const BatchInfo = ({ variant = "light", showTitle = true }: BatchInfoProps) => {
         {workshopBatches.map((batch) => (
           <div
             key={batch.id}
-            className={`rounded-xl p-5 sm:p-6 ${variant === "card"
-              ? "bg-teal-light/50 border border-primary/20"
-              : variant === "dark"
-                ? "bg-primary-foreground/10 backdrop-blur-md border border-primary-foreground/10"
-                : "bg-secondary"
+            className={`relative rounded-xl p-5 sm:p-6 ${isCompleted(batch.id)
+              ? "opacity-40 grayscale"
+              : ""
+              } ${variant === "card"
+                ? "bg-teal-light/50 border border-primary/20"
+                : variant === "dark"
+                  ? "bg-primary-foreground/10 backdrop-blur-md border border-primary-foreground/10"
+                  : "bg-secondary"
               }`}
           >
+            {/* Completed Badge */}
+            {isCompleted(batch.id) && (
+              <div className="absolute top-3 right-3 bg-emerald-600 text-white text-sm font-bold px-3 py-1.5 rounded-full shadow-md border border-emerald-400">
+                Completed
+              </div>
+            )}
+
             <div className="flex flex-col sm:flex-row sm:items-baseline gap-2 mb-4">
-              <span className={`font-serif font-bold text-lg sm:text-xl ${variant === "dark" ? "text-accent" : "text-primary"}`}>
+              <span className={`font-serif font-bold text-lg sm:text-xl ${isCompleted(batch.id) ? mutedColor : variant === "dark" ? "text-accent" : "text-primary"}`}>
                 {batch.name}
               </span>
               <span className={`text-sm sm:text-base font-medium ${mutedColor}`}>
@@ -58,6 +71,19 @@ const BatchInfo = ({ variant = "light", showTitle = true }: BatchInfoProps) => {
                 <Clock className="w-5 h-5 flex-shrink-0" />
                 <span className="font-medium">{batch.time}</span>
               </div>
+
+              {/* Registration deadline notice for Batch 2 */}
+              {batch.id === "batch-2" && (
+                <div className={`flex items-center gap-2 mt-3 pt-3 border-t ${variant === "dark"
+                  ? "border-primary-foreground/20 text-amber-300"
+                  : "border-primary/10 text-amber-600"
+                  }`}>
+                  <Info className="w-4 h-4 flex-shrink-0" />
+                  <span className="text-sm font-medium">
+                    Registrations are open till 30th Jan '26
+                  </span>
+                </div>
+              )}
             </div>
           </div>
         ))}

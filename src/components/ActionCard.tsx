@@ -1,8 +1,5 @@
-import { MapPin } from "lucide-react";
 import BatchInfo from "@/components/BatchInfo";
 import EnrollButton from "@/components/EnrollButton";
-import { workshopDetails } from "@/config/workshopData";
-import locationImage from "@/assets/ssth-location.jpg";
 
 const ActionCard = () => {
     return (
@@ -35,22 +32,17 @@ const ActionCard = () => {
                     </div>
                 </div>
 
-                {/* Location - Compact Version */}
-                <div className="flex items-center gap-4 bg-black/20 rounded-xl p-4">
-                    <img
-                        src={locationImage}
-                        alt="Venue"
-                        className="w-16 h-16 object-cover rounded-lg shadow-sm"
-                    />
-                    <div className="min-w-0">
-                        <div className="flex items-center gap-2 text-accent mb-1">
-                            <MapPin className="w-4 h-4 flex-shrink-0" />
-                            <span className="font-semibold text-sm">Venue</span>
-                        </div>
-                        <p className="text-primary-foreground/90 text-sm truncate">
-                            {workshopDetails.location}
-                        </p>
-                    </div>
+                {/* Contact Info */}
+                <div className="bg-black/20 rounded-xl p-4 text-center">
+                    <p className="text-primary-foreground/90 text-sm">
+                        For Venue details and more queries, contact HVSK Kendra at{" "}
+                        <a
+                            href="mailto:perceptionsconnect@gmail.com"
+                            className="text-accent hover:underline font-medium"
+                        >
+                            perceptionsconnect@gmail.com
+                        </a>
+                    </p>
                 </div>
             </div>
         </div>
