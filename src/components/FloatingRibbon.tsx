@@ -8,10 +8,16 @@ const FloatingRibbon = () => {
   const [timeLeft, setTimeLeft] = useState(20 * 60); // 20 minutes in seconds
   const [isVisible, setIsVisible] = useState(true);
   const [hasScrolled, setHasScrolled] = useState(false);
+  const [isAtBottom, setIsAtBottom] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setHasScrolled(window.scrollY > 300);
+
+      // Check if user has scrolled near bottom (hide before static ribbon appears)
+      const scrolledToBottom =
+        window.innerHeight + window.scrollY >= document.body.offsetHeight - 350;
+      setIsAtBottom(scrolledToBottom);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -34,7 +40,7 @@ const FloatingRibbon = () => {
 
   return (
     <AnimatePresence>
-      {hasScrolled && (
+      {hasScrolled && !isAtBottom && (
         <motion.div
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -57,7 +63,7 @@ const FloatingRibbon = () => {
                     Limited Seats
                   </span>
                 </motion.div>
-                
+
                 <div className="hidden xs:flex items-center gap-1 sm:gap-2 text-white">
                   <Clock className="w-3 h-3 sm:w-4 sm:h-4 text-accent flex-shrink-0" />
                   <span className="hidden sm:inline text-sm font-medium">Register in:</span>
@@ -85,7 +91,7 @@ const FloatingRibbon = () => {
                     <Sparkles className="ml-1 sm:ml-2 w-3 h-3 sm:w-4 sm:h-4" />
                   </a>
                 </Button>
-                
+
                 <button
                   onClick={() => setIsVisible(false)}
                   className="text-white/60 hover:text-white transition-colors p-1"
