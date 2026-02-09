@@ -5,8 +5,7 @@ import sowmyaProfile from "@/assets/sowmya-profile.jpg";
 const credentials = [
   // { icon: BookOpen, text: "B.E. in Electronics & GNIIT with Master's in IT" },
   { icon: Award, text: "Certified Gandhari Vidya trainer, blessed by her Guru to carry forward this lineage" },
-  { icon: Music, text: "Certified Carnatic vocalist" },
-  { icon: Users, text: "17+ years nurturing young minds through Carnatic music training" },
+  { icon: Music, text: "Certified Carnatic vocalist imparting Music to Children" },
   { icon: Target, text: "Trained under various Gurus in Spirituality, Acupressure, Yoga & healing sciences" },
 ];
 
@@ -84,29 +83,22 @@ const FounderSection = () => {
             className="space-y-6"
           >
             <div className="prose prose-lg max-w-none">
-              <p className="text-lg text-foreground leading-relaxed">
+              <p className="text-lg text-foreground leading-relaxed font-medium">
                 <span className="font-serif font-bold text-xl text-primary">Sowmya K T</span> is a 
                 passionate educator, spiritual seeker, and guide, committed to nurturing the next 
                 generation through the timeless wisdom of Gandhari Vidya. With a rare blend of 
                 technical expertise, artistic depth, and spiritual grounding, she brings a holistic 
                 vision to children's learning and inner growth.
               </p>
-
-              <p className="text-muted-foreground leading-relaxed">
-                She began her professional journey as a Corporate Trainer, mentoring IT professionals 
-                in software skills. Alongside her technical pursuits, Sowmya is a trained and certified 
-                Carnatic vocalist. For over 17 years, she has been nurturing young minds through 
-                Carnatic music training, instilling discipline, devotion, and artistic excellence.
-              </p>
-
-              <p className="text-muted-foreground leading-relaxed">
+              <br></br>
+              <p className="text-lg text-foreground leading-relaxed">
                 Her spiritual journey has been shaped under the guidance of various Gurus in 
                 Spirituality, Acupressure, Gandhari Vidya, Yoga, and other healing and awareness 
                 sciences. During her Gurukulam training, she was blessed with the opportunity to 
                 serve and guide many students, gaining deep experiential understanding.
               </p>
-
-              <p className="text-foreground leading-relaxed font-medium">
+              <br></br>
+              <p className="text-lg text-foreground leading-relaxed">
                 Today, Sowmya's work stands at the confluence of ancient wisdom and modern education, 
                 empowering children to grow with awareness, discipline, creativity, and responsibility.
               </p>

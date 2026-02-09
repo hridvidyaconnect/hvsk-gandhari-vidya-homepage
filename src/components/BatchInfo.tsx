@@ -21,12 +21,12 @@ const BatchInfo = ({ variant = "light", showTitle = true }: BatchInfoProps) => {
           Upcoming Batches
         </h3>
       )}
-      <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2">
+      <div className="grid gap-2 grid-cols-2">
         {workshopBatches.map((batch) => (
           <div
             key={batch.id}
-            className={`rounded-xl p-4 flex flex-col ${isCompleted(batch.id)
-              ? "opacity-40 grayscale"
+            className={`rounded-xl p-3 flex flex-col justify-between ${isCompleted(batch.id)
+              ? "opacity-60 grayscale"
               : ""
               } ${batch.id === "batch-2"
                 ? variant === "dark"
@@ -39,56 +39,47 @@ const BatchInfo = ({ variant = "light", showTitle = true }: BatchInfoProps) => {
                     : "bg-secondary"
               }`}
           >
-            {/* Batch Name */}
-            <span className={`font-serif font-bold text-base sm:text-lg block ${isCompleted(batch.id) ? mutedColor : variant === "dark" ? "text-accent" : "text-primary"}`}>
-              {batch.name}
-            </span>
+            <div>
+              {/* Batch Name */}
+              <span className={`font-serif font-bold text-sm sm:text-base block mb-1 ${isCompleted(batch.id) ? mutedColor : variant === "dark" ? "text-accent" : "text-primary"}`}>
+                {batch.name}
+              </span>
 
-            {/* Spacer to push content to bottom for completed batches */}
-            {isCompleted(batch.id) && <div className="flex-grow" />}
+              {/* Timings for non-completed batches where available */}
+              {!isCompleted(batch.id) && batch.time && (
+                <div className={`flex items-center gap-1.5 text-[10px] sm:text-xs ${mutedColor}`}>
+                  <Clock className="w-3 h-3 flex-shrink-0" />
+                  <span className="font-medium">{batch.time}</span>
+                </div>
+              )}
+            </div>
 
-            {/* Completed Badge - at the bottom */}
-            {isCompleted(batch.id) && (
-              <div className="mt-auto pt-2">
-                <span className="bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md border border-emerald-400">
-                  Completed
-                </span>
-              </div>
-            )}
-
-            {/* Timings for non-completed batches */}
-            {!isCompleted(batch.id) && batch.time && (
-              <div className={`flex items-center gap-2 mt-2 text-sm ${mutedColor}`}>
-                <Clock className="w-4 h-4 flex-shrink-0" />
-                <span className="font-medium">{batch.time}</span>
-              </div>
-            )}
-
-            {/* Registration status for Batch 2 - Ongoing */}
-            {batch.id === "batch-2" && (
-              <div className={`flex items-center gap-2 mt-2 ${variant === "dark"
-                ? "text-emerald-300"
-                : "text-emerald-600"
-                }`}>
-                <Info className="w-4 h-4 flex-shrink-0" />
-                <span className="text-sm font-medium">
-                  Ongoing
-                </span>
-              </div>
-            )}
-
-            {/* Registration deadline notice for Batch 3 */}
-            {batch.id === "batch-3" && (
-              <div className={`flex items-center gap-2 mt-2 ${variant === "dark"
-                ? "text-amber-300"
-                : "text-amber-600"
-                }`}>
-                <Info className="w-4 h-4 flex-shrink-0" />
-                <span className="text-sm font-medium">
-                  Open till 31st Mar '26
-                </span>
-              </div>
-            )}
+            <div className="mt-2">
+              {/* Completed Badge */}
+              {isCompleted(batch.id) ? (
+                <div className="flex">
+                  <span className="bg-emerald-600/20 text-emerald-400 text-xs font-semibold px-2.5 py-0.5 rounded border border-emerald-500/30">
+                    Completed
+                  </span>
+                </div>
+              ) : batch.id === "batch-2" ? (
+                /* Registration status for Batch 2 - Ongoing */
+                <div className={`flex items-center gap-1.5 ${variant === "dark" ? "text-emerald-300" : "text-emerald-600"}`}>
+                  <Info className="w-4 h-4 flex-shrink-0" />
+                  <span className="text-xs font-semibold">
+                    Ongoing
+                  </span>
+                </div>
+              ) : batch.id === "batch-3" ? (
+                /* Registration deadline notice for Batch 3 */
+                <div className={`flex items-center gap-1.5 ${variant === "dark" ? "text-amber-300" : "text-amber-600"}`}>
+                  <Info className="w-4 h-4 flex-shrink-0" />
+                  <span className="text-xs font-medium">
+                    Open till 31st Mar '26
+                  </span>
+                </div>
+              ) : null}
+            </div>
           </div>
         ))}
       </div>
