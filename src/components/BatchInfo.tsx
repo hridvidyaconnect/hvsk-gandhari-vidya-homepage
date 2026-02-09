@@ -1,5 +1,5 @@
 import { workshopBatches } from "@/config/workshopData";
-import { Calendar, Clock, Info } from "lucide-react";
+import { Clock, Info } from "lucide-react";
 
 interface BatchInfoProps {
   variant?: "light" | "dark" | "card";
@@ -21,70 +21,74 @@ const BatchInfo = ({ variant = "light", showTitle = true }: BatchInfoProps) => {
           Upcoming Batches
         </h3>
       )}
-      <div className={`grid gap-4 sm:gap-6 ${variant === "dark" ? "grid-cols-1" : "grid-cols-1 sm:grid-cols-2"}`}>
+      <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2">
         {workshopBatches.map((batch) => (
           <div
             key={batch.id}
-            className={`relative rounded-xl p-5 sm:p-6 ${isCompleted(batch.id)
+            className={`rounded-xl p-4 flex flex-col ${isCompleted(batch.id)
               ? "opacity-40 grayscale"
               : ""
-              } ${variant === "card"
-                ? "bg-teal-light/50 border border-primary/20"
-                : variant === "dark"
-                  ? "bg-primary-foreground/10 backdrop-blur-md border border-primary-foreground/10"
-                  : "bg-secondary"
+              } ${batch.id === "batch-2"
+                ? variant === "dark"
+                  ? "bg-primary-foreground/10 backdrop-blur-md border-2 border-emerald-500/50"
+                  : "bg-secondary border-2 border-emerald-500/50"
+                : variant === "card"
+                  ? "bg-teal-light/50 border border-primary/20"
+                  : variant === "dark"
+                    ? "bg-primary-foreground/10 backdrop-blur-md border border-primary-foreground/10"
+                    : "bg-secondary"
               }`}
           >
-            {/* Completed Badge */}
+            {/* Batch Name */}
+            <span className={`font-serif font-bold text-base sm:text-lg block ${isCompleted(batch.id) ? mutedColor : variant === "dark" ? "text-accent" : "text-primary"}`}>
+              {batch.name}
+            </span>
+
+            {/* Spacer to push content to bottom for completed batches */}
+            {isCompleted(batch.id) && <div className="flex-grow" />}
+
+            {/* Completed Badge - at the bottom */}
             {isCompleted(batch.id) && (
-              <div className="absolute top-3 right-3 bg-emerald-600 text-white text-sm font-bold px-3 py-1.5 rounded-full shadow-md border border-emerald-400">
-                Completed
+              <div className="mt-auto pt-2">
+                <span className="bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md border border-emerald-400">
+                  Completed
+                </span>
               </div>
             )}
 
-            <div className="flex flex-col sm:flex-row sm:items-baseline gap-2 mb-4">
-              <span className={`font-serif font-bold text-lg sm:text-xl ${isCompleted(batch.id) ? mutedColor : variant === "dark" ? "text-accent" : "text-primary"}`}>
-                {batch.name}
-              </span>
-              <span className={`text-sm sm:text-base font-medium ${mutedColor}`}>
-                ({batch.month} {batch.year})
-              </span>
-            </div>
-            <div className="space-y-3">
-              <div className={`flex items-start gap-3 text-sm sm:text-base ${mutedColor}`}>
-                <Calendar className="w-5 h-5 flex-shrink-0 mt-1" />
-                <div className="flex flex-wrap gap-2">
-                  {batch.dates.map((date, idx) => (
-                    <span
-                      key={idx}
-                      className={`inline-block px-3 py-1 rounded-lg text-sm font-semibold border ${variant === "dark"
-                        ? "bg-accent/20 border-accent/40 text-primary-foreground"
-                        : "bg-white border-primary/20 text-primary"
-                        }`}
-                    >
-                      {date}
-                    </span>
-                  ))}
-                </div>
-              </div>
-              <div className={`flex items-center gap-3 text-sm sm:text-base ${mutedColor}`}>
-                <Clock className="w-5 h-5 flex-shrink-0" />
+            {/* Timings for non-completed batches */}
+            {!isCompleted(batch.id) && batch.time && (
+              <div className={`flex items-center gap-2 mt-2 text-sm ${mutedColor}`}>
+                <Clock className="w-4 h-4 flex-shrink-0" />
                 <span className="font-medium">{batch.time}</span>
               </div>
+            )}
 
-              {/* Registration deadline notice for Batch 2 */}
-              {batch.id === "batch-2" && (
-                <div className={`flex items-center gap-2 mt-3 pt-3 border-t ${variant === "dark"
-                  ? "border-primary-foreground/20 text-amber-300"
-                  : "border-primary/10 text-amber-600"
-                  }`}>
-                  <Info className="w-4 h-4 flex-shrink-0" />
-                  <span className="text-sm font-medium">
-                    Registrations are open till 30th Jan '26
-                  </span>
-                </div>
-              )}
-            </div>
+            {/* Registration status for Batch 2 - Ongoing */}
+            {batch.id === "batch-2" && (
+              <div className={`flex items-center gap-2 mt-2 ${variant === "dark"
+                ? "text-emerald-300"
+                : "text-emerald-600"
+                }`}>
+                <Info className="w-4 h-4 flex-shrink-0" />
+                <span className="text-sm font-medium">
+                  Ongoing
+                </span>
+              </div>
+            )}
+
+            {/* Registration deadline notice for Batch 3 */}
+            {batch.id === "batch-3" && (
+              <div className={`flex items-center gap-2 mt-2 ${variant === "dark"
+                ? "text-amber-300"
+                : "text-amber-600"
+                }`}>
+                <Info className="w-4 h-4 flex-shrink-0" />
+                <span className="text-sm font-medium">
+                  Open till 31st Mar '26
+                </span>
+              </div>
+            )}
           </div>
         ))}
       </div>

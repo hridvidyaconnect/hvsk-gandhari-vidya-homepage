@@ -33,60 +33,79 @@ const EnrollSection = () => {
             </p>
           </motion.div>
 
-          {/* Content Card */}
+          {/* Two Column Layout */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="bg-primary-foreground/10 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-primary-foreground/20"
+            className="grid lg:grid-cols-2 gap-8 lg:gap-12"
           >
-            {/* Workshop Details */}
-            <div className="grid md:grid-cols-3 gap-6 mb-8">
-              <div className="flex items-center gap-4 text-white">
-                <div className="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center">
-                  <Calendar className="w-6 h-6 text-accent" />
-                </div>
-                <div>
-                  <p className="text-sm text-white/70">Format</p>
-                  <p className="font-medium">{workshopDetails.format}</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-4 text-white">
-                <div className="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center">
-                  <Users className="w-6 h-6 text-accent" />
-                </div>
-                <div>
-                  <p className="text-sm text-white/70">Age Group</p>
-                  <p className="font-medium">{workshopDetails.ageGroup}</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-4 text-white">
-                <div className="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center">
-                  <Clock className="w-6 h-6 text-accent" />
-                </div>
-                <div>
-                  <p className="text-sm text-white/70">Duration</p>
-                  <p className="font-medium">8 Days (Weekends)</p>
-                </div>
-              </div>
-            </div>
+            {/* Left Column: Workshop Highlights */}
+            <div className="bg-primary-foreground/10 backdrop-blur-md rounded-3xl p-8 md:p-10 border border-primary-foreground/20">
+              <h3 className="font-serif text-2xl md:text-3xl font-bold text-white mb-6">
+                Workshop Highlights
+              </h3>
 
-            {/* Batch Information */}
-            <div className="mb-10">
-              <BatchInfo variant="dark" showTitle={true} />
-            </div>
+              {/* Workshop Details */}
+              <div className="space-y-6 mb-8">
+                <div className="flex items-center gap-4 text-white">
+                  <div className="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Calendar className="w-6 h-6 text-accent" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-white/70">Format</p>
+                    <p className="font-medium text-lg">{workshopDetails.format}</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4 text-white">
+                  <div className="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Users className="w-6 h-6 text-accent" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-white/70">Age Group</p>
+                    <p className="font-medium text-lg">{workshopDetails.ageGroup}</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4 text-white">
+                  <div className="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Clock className="w-6 h-6 text-accent" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-white/70">Duration</p>
+                    <p className="font-medium text-lg">7 Days of Immersive Learning</p>
+                  </div>
+                </div>
+              </div>
 
-            {/* CTA */}
-            <div className="text-center">
+              {/* CTA Button */}
               <EnrollButton
                 variant="hero"
                 size="xl"
                 text="Enroll Now & Reserve Your Seat"
+                className="w-full"
               />
-              <p className="text-white/60 text-sm mt-4">
-                After registration, you can choose your preferred batch and complete payment
+              <p className="text-white/60 text-sm mt-4 text-center">
+                After registration, choose your preferred batch
               </p>
+            </div>
+
+            {/* Right Column: Batch Information */}
+            <div className="bg-primary-foreground/10 backdrop-blur-md rounded-3xl p-8 md:p-10 border border-primary-foreground/20">
+              <BatchInfo variant="dark" showTitle={true} />
+
+              {/* Venue Contact Info */}
+              <div className="bg-black/20 rounded-xl p-4 text-center mt-6">
+                <p className="text-primary-foreground/90 text-sm">
+                  For Venue details and more queries, contact HVSK Kendra at{" "}
+                  <a
+                    href="mailto:perceptionsconnect@gmail.com"
+                    className="text-accent hover:underline font-medium"
+                  >
+                    perceptionsconnect@gmail.com
+                  </a>
+                </p>
+              </div>
             </div>
           </motion.div>
         </div>

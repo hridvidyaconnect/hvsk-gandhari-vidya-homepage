@@ -15,7 +15,7 @@ export interface WorkshopBatch {
 export const workshopBatches: WorkshopBatch[] = [
   {
     id: "batch-1",
-    name: "Batch 1",
+    name: "Batch Jan 2026",
     dates: [
       "Jan 3",
       "Jan 4",
@@ -32,7 +32,7 @@ export const workshopBatches: WorkshopBatch[] = [
   },
   {
     id: "batch-2",
-    name: "Batch 2",
+    name: "Batch Feb 2026",
     dates: [
       "Jan 31",
       "Feb 1",
@@ -47,12 +47,28 @@ export const workshopBatches: WorkshopBatch[] = [
     month: "February",
     year: 2026,
   },
+  {
+    id: "batch-3",
+    name: "Batch Apr 2026",
+    dates: [],
+    time: "9 AM - 1 PM",
+    month: "April",
+    year: 2026,
+  },
+  {
+    id: "batch-4",
+    name: "Batch May 2026",
+    dates: [],
+    time: "9 AM - 1 PM",
+    month: "May",
+    year: 2026,
+  },
 ];
 
 export const workshopDetails = {
-  format: "Saturdays and Sundays | 4 hours/day",
+  format: "Monday to Friday | 4 Hours/day",
   ageGroup: "6–18 years",
-  duration: "8-day workshop on weekends",
+  duration: "5-day workshop on weekdays",
   location:
     "The Shivaratnapuri Temple of Health, Pyramid, Rajarajeshwari Nagar, Bengaluru 560098",
 };
