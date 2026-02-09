@@ -25,18 +25,31 @@ const TestimonialsSection = () => {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.2 }}
-                    className="max-w-4xl mx-auto"
+                    className="max-w-5xl mx-auto"
                 >
-                    <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl border border-border bg-muted">
-                        <iframe
-                            className="absolute top-0 left-0 w-full h-full"
-                            src="https://www.youtube.com/embed/9kVnT0wkZ_0?si=At4vnp3sfFBdWSuv"
-                            title="Gandhari Vidya Parents Testimonials - Batch Jan 2026"
-                            frameBorder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerPolicy="strict-origin-when-cross-origin"
-                            allowFullScreen
-                        ></iframe>
+                    <div className="grid md:grid-cols-2 gap-6">
+                        <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl border border-border bg-muted">
+                            <iframe
+                                className="absolute top-0 left-0 w-full h-full"
+                                src="https://www.youtube.com/embed/9kVnT0wkZ_0?si=At4vnp3sfFBdWSuv"
+                                title="Gandhari Vidya Parents Testimonials - Batch Jan 2026"
+                                frameBorder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerPolicy="strict-origin-when-cross-origin"
+                                allowFullScreen
+                            ></iframe>
+                        </div>
+                        <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl border border-border bg-muted">
+                            <iframe
+                                className="absolute top-0 left-0 w-full h-full"
+                                src="https://www.youtube.com/embed/3-1BLcP8YcY?si=jQBcX57yDkcTa2mw"
+                                title="Gandhari Vidya Journey"
+                                frameBorder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerPolicy="strict-origin-when-cross-origin"
+                                allowFullScreen
+                            ></iframe>
+                        </div>
                     </div>
 
                     <div className="mt-8 text-center px-4">
