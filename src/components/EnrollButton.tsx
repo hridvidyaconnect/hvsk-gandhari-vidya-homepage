@@ -1,13 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { formLinks } from "@/config/workshopData";
 import { ArrowRight } from "lucide-react";
+import { ReactNode } from "react";
 
 interface EnrollButtonProps {
   variant?: "hero" | "gold" | "cta" | "purple" | "outline-gold";
   size?: "default" | "lg" | "xl";
   className?: string;
   showArrow?: boolean;
-  text?: string;
+  text?: ReactNode;
 }
 
 const EnrollButton = ({

@@ -82,7 +82,7 @@ const EnrollSection = () => {
               <EnrollButton
                 variant="hero"
                 size="xl"
-                text="Enroll Now & Reserve Your Seat"
+                text={<>Enroll Now<br />Reserve Your Seat</>}
                 className="w-full"
               />
               <p className="text-white/60 text-sm mt-4 text-center">
