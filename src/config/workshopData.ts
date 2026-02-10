@@ -49,6 +49,14 @@ export const workshopBatches: WorkshopBatch[] = [
   },
   {
     id: "batch-3",
+    name: "Batch Mar 2026",
+    dates: [],
+    time: "",
+    month: "March",
+    year: 2026,
+  },
+  {
+    id: "batch-4",
     name: "Batch Apr 2026",
     dates: [],
     time: "",
@@ -56,7 +64,7 @@ export const workshopBatches: WorkshopBatch[] = [
     year: 2026,
   },
   {
-    id: "batch-4",
+    id: "batch-5",
     name: "Batch May 2026",
     dates: [],
     time: "",

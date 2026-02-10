@@ -22,12 +22,15 @@ const BatchInfo = ({ variant = "light", showTitle = true }: BatchInfoProps) => {
         </h3>
       )}
       <div className="grid gap-2 grid-cols-2">
-        {workshopBatches.map((batch) => (
+        {workshopBatches.map((batch, index) => (
           <div
             key={batch.id}
-            className={`rounded-xl p-3 flex flex-col justify-between ${isCompleted(batch.id)
-              ? "opacity-60 grayscale"
+            className={`rounded-xl p-3 flex flex-col justify-between ${index === workshopBatches.length - 1 && workshopBatches.length % 2 !== 0
+              ? "col-span-2 mx-auto w-[calc(50%-0.25rem)]"
               : ""
+              } ${isCompleted(batch.id)
+                ? "opacity-60 grayscale"
+                : ""
               } ${batch.id === "batch-2"
                 ? variant === "dark"
                   ? "bg-primary-foreground/10 backdrop-blur-md border-2 border-emerald-500/50"
@@ -70,16 +73,8 @@ const BatchInfo = ({ variant = "light", showTitle = true }: BatchInfoProps) => {
                     Ongoing
                   </span>
                 </div>
-              ) : batch.id === "batch-3" ? (
-                /* Registration deadline notice for Batch 3 */
-                <div className={`flex items-center gap-1.5 ${variant === "dark" ? "text-amber-300" : "text-amber-600"}`}>
-                  <Info className="w-4 h-4 flex-shrink-0" />
-                  <span className="text-xs font-medium">
-                    Registrations Open Now
-                  </span>
-                </div>
-              ) : batch.id === "batch-4" ? (
-                /* Registration deadline notice for Batch 4 */
+              ) : ["batch-3", "batch-4", "batch-5"].includes(batch.id) ? (
+                /* Registration notice for upcoming batches */
                 <div className={`flex items-center gap-1.5 ${variant === "dark" ? "text-amber-300" : "text-amber-600"}`}>
                   <Info className="w-4 h-4 flex-shrink-0" />
                   <span className="text-xs font-medium">
