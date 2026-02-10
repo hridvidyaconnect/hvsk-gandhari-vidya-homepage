@@ -75,7 +75,7 @@ const BatchInfo = ({ variant = "light", showTitle = true }: BatchInfoProps) => {
                 <div className={`flex items-center gap-1.5 ${variant === "dark" ? "text-amber-300" : "text-amber-600"}`}>
                   <Info className="w-4 h-4 flex-shrink-0" />
                   <span className="text-xs font-medium">
-                    Open now till 31st Mar '26
+                    Registrations Open Now
                   </span>
                 </div>
               ) : batch.id === "batch-4" ? (
@@ -83,7 +83,7 @@ const BatchInfo = ({ variant = "light", showTitle = true }: BatchInfoProps) => {
                 <div className={`flex items-center gap-1.5 ${variant === "dark" ? "text-amber-300" : "text-amber-600"}`}>
                   <Info className="w-4 h-4 flex-shrink-0" />
                   <span className="text-xs font-medium">
-                    Open now till 31st Apr '26
+                    Registrations Open Now
                   </span>
                 </div>
               ) : null}

@@ -66,7 +66,7 @@ export const workshopBatches: WorkshopBatch[] = [
 ];
 
 export const workshopDetails = {
-  format: "Monday to Friday | 4 Hours/day",
+  format: "Monday to Saturday | 4.5 Hours/Day",
   ageGroup: "6–18 years",
   duration: "5-day workshop on weekdays",
   location:

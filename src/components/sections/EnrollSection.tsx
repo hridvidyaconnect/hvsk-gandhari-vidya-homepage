@@ -73,7 +73,7 @@ const EnrollSection = () => {
                   </div>
                   <div>
                     <p className="text-sm text-white/70">Duration</p>
-                    <p className="font-medium text-lg">7 Days of Immersive Learning</p>
+                    <p className="font-medium text-lg">6 Days of Immersive Learning</p>
                   </div>
                 </div>
               </div>
