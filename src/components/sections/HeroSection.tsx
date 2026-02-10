@@ -18,11 +18,11 @@ const HeroSection = () => {
   const logoOpacity = useTransform(scrollY, [0, 200], [1, 0]);
   const logoScale = useTransform(scrollY, [0, 200], [1, 0.8]);
   const logoY = useTransform(scrollY, [0, 200], [0, -20]);
-  
+
   // Animation values for nav links - fade out as user scrolls
   const navOpacity = useTransform(scrollY, [50, 200], [1, 0]);
   const navY = useTransform(scrollY, [50, 200], [0, -80]);
-  
+
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
@@ -106,7 +106,7 @@ const HeroSection = () => {
               {/* Navigation Links - Initially visible, animate to navbar on scroll */}
               <motion.nav
                 style={{ opacity: navOpacity, y: navY }}
-                className="flex flex-wrap gap-4 lg:gap-6 pt-6"
+                className="flex flex-wrap gap-4 lg:gap-6 pt-6 justify-center lg:justify-start"
               >
                 {navLinks.map((link) => (
                   <button
