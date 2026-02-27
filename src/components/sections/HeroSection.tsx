@@ -7,9 +7,10 @@ import { workshopDetails } from "@/config/workshopData";
 
 const navLinks = [
   { label: "About", href: "#about" },
-  { label: "Gandhari Vidya", href: "#gandhari-vidya" },
+  { label: "Gandhari Vidya", href: "#masterclass" },
   { label: "Benefits", href: "#benefits" },
   { label: "Guide", href: "#founder" },
+  { label: "Reviews", href: "#testimonials" },
   { label: "FAQs", href: "#faq" },
 ];
 
@@ -27,6 +28,7 @@ const HeroSection = () => {
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
+      window.history.pushState(null, "", href);
     }
   };
 
@@ -54,13 +56,13 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="lg:col-span-7 space-y-8"
+              className="lg:col-span-7 space-y-8 text-center lg:text-left items-center lg:items-start"
             >
-              <div className="space-y-4">
+              <div className="space-y-4 flex flex-col items-center lg:items-start">
                 {/* Hero Logo Animation */}
                 <motion.div
                   style={{ opacity: logoOpacity, scale: logoScale, y: logoY }}
-                  className="origin-left"
+                  className="origin-center lg:origin-left"
                 >
                   <img
                     src={logoImage}
@@ -82,13 +84,13 @@ const HeroSection = () => {
               </h1>
 
               {/* Subheadline */}
-              <p className="text-xl md:text-2xl text-primary-foreground/90 font-light leading-relaxed max-w-2xl">
+              <p className="text-xl md:text-2xl text-primary-foreground/90 font-light leading-relaxed max-w-2xl mx-auto lg:mx-0">
                 A Path of the ancient Rishi Parampara where intuition becomes ability
                 and awareness becomes strength.
               </p>
 
               {/* Details Tags */}
-              <div className="flex flex-wrap gap-4 pt-4">
+              <div className="flex flex-wrap justify-center lg:justify-start gap-4 pt-4">
                 <div className="flex items-center gap-2 bg-primary-foreground/10 backdrop-blur-sm px-4 py-2 rounded-full text-base border border-primary-foreground/10">
                   <Calendar className="w-5 h-5 text-accent flex-shrink-0" />
                   <span className="text-primary-foreground font-medium">
@@ -106,13 +108,16 @@ const HeroSection = () => {
               {/* Navigation Links - Initially visible, animate to navbar on scroll */}
               <motion.nav
                 style={{ opacity: navOpacity, y: navY }}
-                className="flex flex-wrap gap-4 lg:gap-6 pt-6 justify-center lg:justify-start"
+                className="flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-3 pt-6"
               >
                 {navLinks.map((link) => (
                   <button
                     key={link.href}
                     onClick={() => scrollToSection(link.href)}
-                    className="text-primary-foreground/90 hover:text-accent font-medium text-sm lg:text-base transition-colors"
+                    className={`font-medium text-sm lg:text-base transition-all ${link.label === "Reviews"
+                      ? "text-accent border border-accent/60 rounded-full px-4 py-1.5 animate-pulse-glow hover:bg-accent/20 hover:text-accent relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-accent/20 before:to-transparent before:animate-shimmer"
+                      : "text-primary-foreground/90 hover:text-accent transition-colors"
+                      }`}
                   >
                     {link.label}
                   </button>

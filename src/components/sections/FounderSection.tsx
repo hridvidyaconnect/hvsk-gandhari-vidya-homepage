@@ -28,9 +28,11 @@ const FounderSection = () => {
           <span className="text-primary font-medium tracking-widest uppercase text-sm">
             Meet Your Guide
           </span>
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mt-2">
-            The <span className="text-accent">Founder</span> & Guide
-          </h2>
+          <a href="#founder" className="no-underline hover:no-underline">
+            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mt-2 hover:opacity-80 transition-opacity cursor-pointer">
+              The <span className="text-accent">Founder</span> & Guide
+            </h2>
+          </a>
         </motion.div>
 
         {/* Main Content */}
@@ -84,22 +86,22 @@ const FounderSection = () => {
           >
             <div className="prose prose-lg max-w-none">
               <p className="text-lg text-foreground leading-relaxed font-medium">
-                <span className="font-serif font-bold text-xl text-primary">Sowmya K T</span> is a 
-                passionate educator, spiritual seeker, and guide, committed to nurturing the next 
-                generation through the timeless wisdom of Gandhari Vidya. With a rare blend of 
-                technical expertise, artistic depth, and spiritual grounding, she brings a holistic 
+                <span className="font-serif font-bold text-xl text-primary">Sowmya K T</span> is a
+                passionate educator, spiritual seeker, and guide, committed to nurturing the next
+                generation through the timeless wisdom of Gandhari Vidya. With a rare blend of
+                technical expertise, artistic depth, and spiritual grounding, she brings a holistic
                 vision to children's learning and inner growth.
               </p>
               <br></br>
               <p className="text-lg text-foreground leading-relaxed">
-                Her spiritual journey has been shaped under the guidance of various Gurus in 
-                Spirituality, Acupressure, Gandhari Vidya, Yoga, and other healing and awareness 
-                sciences. During her Gurukulam training, she was blessed with the opportunity to 
+                Her spiritual journey has been shaped under the guidance of various Gurus in
+                Spirituality, Acupressure, Gandhari Vidya, Yoga, and other healing and awareness
+                sciences. During her Gurukulam training, she was blessed with the opportunity to
                 serve and guide many students, gaining deep experiential understanding.
               </p>
               <br></br>
               <p className="text-lg text-foreground leading-relaxed">
-                Today, Sowmya's work stands at the confluence of ancient wisdom and modern education, 
+                Today, Sowmya's work stands at the confluence of ancient wisdom and modern education,
                 empowering children to grow with awareness, discipline, creativity, and responsibility.
               </p>
             </div>
@@ -109,15 +111,15 @@ const FounderSection = () => {
               <div className="bg-teal-light/30 rounded-xl p-6 border border-primary/20">
                 <h4 className="font-serif text-lg font-bold text-primary mb-3">Vision</h4>
                 <p className="text-muted-foreground text-sm">
-                  To spread Gandhari Vidya globally and empower millions of children through 
+                  To spread Gandhari Vidya globally and empower millions of children through
                   ancient wisdom.
                 </p>
               </div>
               <div className="bg-sage/30 rounded-xl p-6 border border-secondary-foreground/20">
                 <h4 className="font-serif text-lg font-bold text-secondary-foreground mb-3">Mission</h4>
                 <p className="text-muted-foreground text-sm">
-                  To nurture expressive, innovative, and adaptable children who grow with 
-                  self-discipline, responsibility, and experiential learning—spreading 
+                  To nurture expressive, innovative, and adaptable children who grow with
+                  self-discipline, responsibility, and experiential learning—spreading
                   knowledge and adding value to a better global future.
                 </p>
               </div>

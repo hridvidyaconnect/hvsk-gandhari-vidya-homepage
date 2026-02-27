@@ -21,9 +21,11 @@ const AboutSection = () => {
             <span className="text-primary font-medium tracking-widest uppercase text-sm">
               Our Foundation
             </span>
-            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mt-2">
-              What is <span className="text-primary">Hrid Vidya Samskriti Kendra</span>?
-            </h2>
+            <a href="#about" className="no-underline hover:no-underline">
+              <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mt-2 hover:opacity-80 transition-opacity cursor-pointer">
+                What is <span className="text-primary">Hrid Vidya Samskriti Kendra</span>?
+              </h2>
+            </a>
           </div>
 
           {/* Content Card */}
@@ -50,15 +52,15 @@ const AboutSection = () => {
             </div>
 
             <p className="text-lg md:text-xl text-foreground leading-relaxed mb-6">
-              Every child is born with an inbuilt sixth sense ability, but without guidance 
-              this capability remains unused and fades away. Children in their young age are 
+              Every child is born with an inbuilt sixth sense ability, but without guidance
+              this capability remains unused and fades away. Children in their young age are
               in the best capacity to hone their senses.
             </p>
 
             <p className="text-lg md:text-xl text-foreground leading-relaxed mb-6">
-              At <span className="font-semibold text-primary">Hrid Vidya Samskriti Kendra</span>, 
-              we aim to gently activate this innate potential that exists in every child, using 
-              <span className="font-semibold text-accent"> Gandhari Vidya</span>, a powerful tool 
+              At <span className="font-semibold text-primary">Hrid Vidya Samskriti Kendra</span>,
+              we aim to gently activate this innate potential that exists in every child, using
+              <span className="font-semibold text-accent"> Gandhari Vidya</span>, a powerful tool
               on the path of Raja Vidya.
             </p>
           </motion.div>

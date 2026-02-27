@@ -60,9 +60,11 @@ const FAQSection = () => {
           <span className="text-primary font-medium tracking-widest uppercase text-sm">
             Have Questions?
           </span>
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mt-2">
-            Frequently Asked <span className="text-accent">Questions</span>
-          </h2>
+          <a href="#faq" className="no-underline hover:no-underline">
+            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mt-2 hover:opacity-80 transition-opacity cursor-pointer">
+              Frequently Asked <span className="text-accent">Questions</span>
+            </h2>
+          </a>
         </motion.div>
 
         {/* FAQ Accordion */}

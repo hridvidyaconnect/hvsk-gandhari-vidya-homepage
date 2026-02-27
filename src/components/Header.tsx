@@ -7,9 +7,10 @@ import logoImage from "@/assets/logo.png";
 
 const navLinks = [
   { label: "About", href: "#about" },
-  { label: "Gandhari Vidya", href: "#gandhari-vidya" },
+  { label: "Gandhari Vidya", href: "#masterclass" },
   { label: "Benefits", href: "#benefits" },
   { label: "Guide", href: "#founder" },
+  { label: "Reviews", href: "#testimonials" },
   { label: "FAQs", href: "#faq" },
 ];
 
@@ -29,6 +30,7 @@ const Header = () => {
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
+      window.history.pushState(null, "", href);
     }
     setIsMobileMenuOpen(false);
   };
@@ -82,7 +84,7 @@ const Header = () => {
             </nav>
 
             {/* CTA Button - Fade in when scrolled */}
-            <motion.div 
+            <motion.div
               className="hidden lg:block"
               initial={{ opacity: 0, y: -10 }}
               animate={isScrolled ? { opacity: 1, y: 0 } : { opacity: 0, y: -10 }}

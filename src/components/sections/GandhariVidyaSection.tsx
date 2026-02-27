@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
-import { 
-  Eye, BookOpen, Heart, Users, Brain, 
-  Palette, Hash, BookText, Move, Zap, Focus 
+import {
+  Eye, BookOpen, Heart, Users, Brain,
+  Palette, Hash, BookText, Move, Zap, Focus
 } from "lucide-react";
 
 const capabilities = [
@@ -24,7 +24,7 @@ const features = [
 
 const GandhariVidyaSection = () => {
   return (
-    <section id="gandhari-vidya" className="py-24 bg-card relative overflow-hidden">
+    <section id="masterclass" className="py-24 bg-card relative overflow-hidden">
       {/* Decorative Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-10 left-10 w-40 h-40 border-4 border-primary rounded-full" />
@@ -44,11 +44,13 @@ const GandhariVidyaSection = () => {
           <span className="text-primary font-medium tracking-widest uppercase text-sm">
             The Science of Inner Vision
           </span>
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mt-2 mb-4">
-            What is <span className="text-accent">Gandhari Vidya</span>?
-          </h2>
+          <a href="#masterclass" className="no-underline hover:no-underline">
+            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mt-2 mb-4 hover:opacity-80 transition-opacity cursor-pointer">
+              What is <span className="text-accent">Gandhari Vidya</span>?
+            </h2>
+          </a>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            Inspired by Queen Gandhari's inner sight and yogic restraint, Gandhari Vidya 
+            Inspired by Queen Gandhari's inner sight and yogic restraint, Gandhari Vidya
             is a sacred practice that awakens the natural intuitive abilities within every child.
           </p>
         </motion.div>
@@ -86,8 +88,8 @@ const GandhariVidyaSection = () => {
             {/* Additional Info */}
             <div className="mt-6 p-4 bg-sage/30 rounded-xl border border-sage">
               <p className="text-muted-foreground text-sm">
-                <span className="font-semibold text-foreground">Note:</span> All exercises 
-                are practiced blindfolded, learning without books, mobiles or e-technology — 
+                <span className="font-semibold text-foreground">Note:</span> All exercises
+                are practiced blindfolded, learning without books, mobiles or e-technology —
                 aimed at enhancing children's sensitivity, intellect, self-awareness and mindfulness.
               </p>
             </div>

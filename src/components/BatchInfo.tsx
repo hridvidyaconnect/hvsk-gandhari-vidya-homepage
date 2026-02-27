@@ -11,8 +11,8 @@ const BatchInfo = ({ variant = "light", showTitle = true }: BatchInfoProps) => {
   const mutedColor = variant === "dark" ? "text-primary-foreground/80" : "text-muted-foreground";
   const bgColor = variant === "card" ? "bg-card shadow-card" : "";
 
-  // Check if batch is completed (batch-1 is completed)
-  const isCompleted = (batchId: string) => batchId === "batch-1";
+  // Check if batch is completed (batch-1 and batch-2 are completed)
+  const isCompleted = (batchId: string) => ["batch-1", "batch-2"].includes(batchId);
 
   return (
     <div className={`space-y-4 ${bgColor} ${variant === "card" ? "p-6 rounded-xl" : ""}`}>
@@ -31,15 +31,11 @@ const BatchInfo = ({ variant = "light", showTitle = true }: BatchInfoProps) => {
               } ${isCompleted(batch.id)
                 ? "opacity-60 grayscale"
                 : ""
-              } ${batch.id === "batch-2"
-                ? variant === "dark"
-                  ? "bg-primary-foreground/10 backdrop-blur-md border-2 border-emerald-500/50"
-                  : "bg-secondary border-2 border-emerald-500/50"
-                : variant === "card"
-                  ? "bg-teal-light/50 border border-primary/20"
-                  : variant === "dark"
-                    ? "bg-primary-foreground/10 backdrop-blur-md border border-primary-foreground/10"
-                    : "bg-secondary"
+              } ${variant === "card"
+                ? "bg-teal-light/50 border border-primary/20"
+                : variant === "dark"
+                  ? "bg-primary-foreground/10 backdrop-blur-md border border-primary-foreground/10"
+                  : "bg-secondary"
               }`}
           >
             <div>
@@ -55,6 +51,24 @@ const BatchInfo = ({ variant = "light", showTitle = true }: BatchInfoProps) => {
                   <span className="font-medium">{batch.time}</span>
                 </div>
               )}
+
+              {/* Sub-batches mapping */}
+              {batch.subBatches && batch.subBatches.length > 0 && (
+                <div className="mt-3 space-y-2">
+                  {batch.subBatches.map((subBatch, idx) => (
+                    <div key={idx} className={`text-xs p-2 rounded-lg ${variant === 'dark' ? 'bg-primary-foreground/10' : 'bg-background/60 shadow-sm border border-border/50'}`}>
+                      <div className="flex items-center justify-between">
+                        <span className={`font-semibold ${variant === 'dark' ? 'text-primary-foreground' : 'text-foreground'}`}>
+                          {subBatch.dates}
+                        </span>
+                        <span className={`text-[10px] px-1.5 py-0.5 rounded font-medium ${variant === 'dark' ? 'bg-primary-foreground/20 text-primary-foreground' : 'bg-primary/10 text-primary'}`}>
+                          {subBatch.location}
+                        </span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
 
             <div className="mt-2">
@@ -65,15 +79,7 @@ const BatchInfo = ({ variant = "light", showTitle = true }: BatchInfoProps) => {
                     Completed
                   </span>
                 </div>
-              ) : batch.id === "batch-2" ? (
-                /* Registration status for Batch 2 - Ongoing */
-                <div className={`flex items-center gap-1.5 ${variant === "dark" ? "text-emerald-300" : "text-emerald-600"}`}>
-                  <Info className="w-4 h-4 flex-shrink-0" />
-                  <span className="text-xs font-semibold">
-                    Ongoing
-                  </span>
-                </div>
-              ) : ["batch-3", "batch-4", "batch-5"].includes(batch.id) ? (
+              ) : ["batch-4", "batch-5"].includes(batch.id) ? (
                 /* Registration notice for upcoming batches */
                 <div className={`flex items-center gap-1.5 ${variant === "dark" ? "text-amber-300" : "text-amber-600"}`}>
                   <Info className="w-4 h-4 flex-shrink-0" />
@@ -85,6 +91,11 @@ const BatchInfo = ({ variant = "light", showTitle = true }: BatchInfoProps) => {
             </div>
           </div>
         ))}
+      </div>
+
+      {/* TBA Note */}
+      <div className={`text-xs text-center mt-3 font-medium ${mutedColor}`}>
+        *TBA - To Be Announced
       </div>
     </div>
   );

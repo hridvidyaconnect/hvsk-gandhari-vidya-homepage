@@ -10,6 +10,11 @@ export interface WorkshopBatch {
   time: string;
   month: string;
   year: number;
+  subBatches?: {
+    name: string;
+    dates: string;
+    location: string;
+  }[];
 }
 
 export const workshopBatches: WorkshopBatch[] = [
@@ -48,20 +53,18 @@ export const workshopBatches: WorkshopBatch[] = [
     year: 2026,
   },
   {
-    id: "batch-3",
-    name: "Batch Mar 2026",
-    dates: [],
-    time: "",
-    month: "March",
-    year: 2026,
-  },
-  {
     id: "batch-4",
     name: "Batch Apr 2026",
     dates: [],
     time: "",
     month: "April",
     year: 2026,
+    subBatches: [
+      { name: "Batch 1", dates: "6th-11th", location: "Bengaluru" },
+      { name: "Batch 2", dates: "13th-18th", location: "Tamilnadu" },
+      { name: "Batch 3", dates: "20th-25th", location: "Bengaluru" },
+      { name: "Batch 4", dates: "27th-2nd", location: "TBA" },
+    ],
   },
   {
     id: "batch-5",
@@ -70,6 +73,12 @@ export const workshopBatches: WorkshopBatch[] = [
     time: "",
     month: "May",
     year: 2026,
+    subBatches: [
+      { name: "Batch 1", dates: "5th-9th", location: "TBA" },
+      { name: "Batch 2", dates: "11th-16th", location: "TBA" },
+      { name: "Batch 3", dates: "18th-23rd", location: "TBA" },
+      { name: "Batch 4", dates: "25th-30th", location: "TBA" },
+    ],
   },
 ];
 

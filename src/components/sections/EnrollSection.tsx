@@ -24,9 +24,11 @@ const EnrollSection = () => {
             <span className="text-accent font-medium tracking-widest uppercase text-sm">
               Take the First Step
             </span>
-            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-2 mb-4">
-              Enroll Your Child Today
-            </h2>
+            <a href="#enroll" className="no-underline hover:no-underline">
+              <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-2 mb-4 hover:opacity-80 transition-opacity cursor-pointer">
+                Enroll Your Child Today
+              </h2>
+            </a>
             <p className="text-white/90 text-lg max-w-2xl mx-auto">
               Give your child the gift of inner vision and intuitive awareness.
               Limited seats available for each batch.
