@@ -36,6 +36,8 @@ jobs:
 
       - name: Build
         run: npm run build
+        env:
+          VITE_GOOGLE_SHEETS_CSV_URL: ${{ secrets.VITE_GOOGLE_SHEETS_CSV_URL }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
