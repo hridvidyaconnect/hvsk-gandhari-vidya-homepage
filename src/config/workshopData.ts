@@ -95,9 +95,9 @@ export const workshopBatches: WorkshopBatch[] = [
 ];
 
 export const workshopDetails = {
-  format: "Monday to Saturday | 4.5 Hours/Day",
-  ageGroup: "6–18 years",
-  duration: "5-day workshop on weekdays",
+  format: "Saturdays & Sundays | 4pm-8pm",
+  ageGroup: "6–18 years (Now Extended till 25 years)",
+  duration: "6 sessions over 3 weekends",
   location:
     "The Shivaratnapuri Temple of Health, Pyramid, Rajarajeshwari Nagar, Bengaluru 560098",
 };
