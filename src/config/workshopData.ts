@@ -8,6 +8,38 @@
 export const GOOGLE_SHEETS_CSV_URL =
   import.meta.env.VITE_GOOGLE_SHEETS_CSV_URL || "";
 
+// Testimonial videos — derived from the same spreadsheet, different tab
+// Change this gid if the Testimonials tab is recreated
+const TESTIMONIALS_SHEET_GID = "1663554594";
+
+/**
+ * Derives the CSV URL for the Testimonials sheet tab from the base URL
+ * by replacing the `gid` query parameter.
+ */
+export function getTestimonialsSheetUrl(): string {
+  if (!GOOGLE_SHEETS_CSV_URL) return "";
+  const url = new URL(GOOGLE_SHEETS_CSV_URL);
+  url.searchParams.set("gid", TESTIMONIALS_SHEET_GID);
+  return url.toString();
+}
+
+export interface TestimonialVideo {
+  title: string;
+  embedUrl: string;
+}
+
+// Fallback data used when Google Sheets testimonials fetch fails
+export const testimonialVideosFallback: TestimonialVideo[] = [
+  {
+    title: "Parents Testimonials - Batch Jan 2026",
+    embedUrl: "https://www.youtube.com/embed/9kVnT0wkZ_0?si=At4vnp3sfFBdWSuv",
+  },
+  {
+    title: "Gandhari Vidya Journey",
+    embedUrl: "https://www.youtube.com/embed/3-1BLcP8YcY?si=jQBcX57yDkcTa2mw",
+  },
+];
+
 export interface WorkshopBatch {
   id: string;
   name: string;

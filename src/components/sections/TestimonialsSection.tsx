@@ -1,7 +1,14 @@
-import { motion } from "framer-motion";
-import { Instagram, Facebook, Youtube } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Instagram, Facebook, Youtube, Play } from "lucide-react";
+import { useTestimonialVideos } from "@/hooks/useTestimonialVideos";
 
 const TestimonialsSection = () => {
+    const { videos, isLoading } = useTestimonialVideos();
+    const [selectedIndex, setSelectedIndex] = useState(0);
+
+    const selectedVideo = videos[selectedIndex] ?? videos[0];
+
     return (
         <section id="testimonials" className="py-24 bg-card relative overflow-hidden">
             {/* Decorative Elements */}
@@ -28,32 +35,118 @@ const TestimonialsSection = () => {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.2 }}
-                    className="max-w-5xl mx-auto"
+                    className="max-w-6xl mx-auto"
                 >
-                    <div className="grid md:grid-cols-2 gap-6">
-                        <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl border border-border bg-muted">
-                            <iframe
-                                className="absolute top-0 left-0 w-full h-full"
-                                src="https://www.youtube.com/embed/9kVnT0wkZ_0?si=At4vnp3sfFBdWSuv"
-                                title="Gandhari Vidya Parents Testimonials - Batch Jan 2026"
-                                frameBorder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                referrerPolicy="strict-origin-when-cross-origin"
-                                allowFullScreen
-                            ></iframe>
+                    {isLoading ? (
+                        /* Loading skeleton */
+                        <div className="flex flex-col md:flex-row gap-5">
+                            <div className="flex-1 aspect-video rounded-2xl bg-muted animate-pulse" />
+                            <div className="md:w-72 lg:w-80 space-y-3">
+                                {[1, 2, 3].map((i) => (
+                                    <div key={i} className="h-16 rounded-xl bg-muted animate-pulse" />
+                                ))}
+                            </div>
                         </div>
-                        <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl border border-border bg-muted">
-                            <iframe
-                                className="absolute top-0 left-0 w-full h-full"
-                                src="https://www.youtube.com/embed/3-1BLcP8YcY?si=jQBcX57yDkcTa2mw"
-                                title="Gandhari Vidya Journey"
-                                frameBorder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                referrerPolicy="strict-origin-when-cross-origin"
-                                allowFullScreen
-                            ></iframe>
+                    ) : (
+                        <div className="flex flex-col md:flex-row gap-5">
+                            {/* Main Video Player */}
+                            <div className="flex-1 min-w-0">
+                                <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl border border-border bg-muted">
+                                    <AnimatePresence mode="wait">
+                                        <motion.iframe
+                                            key={selectedVideo.embedUrl}
+                                            className="absolute top-0 left-0 w-full h-full"
+                                            src={selectedVideo.embedUrl}
+                                            title={selectedVideo.title}
+                                            frameBorder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                            referrerPolicy="strict-origin-when-cross-origin"
+                                            allowFullScreen
+                                            initial={{ opacity: 0 }}
+                                            animate={{ opacity: 1 }}
+                                            exit={{ opacity: 0 }}
+                                            transition={{ duration: 0.3 }}
+                                        />
+                                    </AnimatePresence>
+                                </div>
+                                {/* Now Playing label */}
+                                <motion.p
+                                    key={selectedVideo.title}
+                                    initial={{ opacity: 0, y: 6 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.3 }}
+                                    className="mt-3 text-sm font-medium text-muted-foreground flex items-center gap-2"
+                                >
+                                    <span className="inline-block w-2 h-2 rounded-full bg-primary animate-pulse" />
+                                    Now Playing: <span className="text-foreground">{selectedVideo.title}</span>
+                                </motion.p>
+                            </div>
+
+                            {/* Vertical Video Gallery Sidebar */}
+                            <div className="md:w-72 lg:w-80 flex-shrink-0">
+                                <div className="md:max-h-[calc(56.25vw*0.75)] lg:max-h-[480px] overflow-y-auto pr-1 space-y-2 testimonials-sidebar">
+                                    {videos.map((video, index) => {
+                                        const isActive = index === selectedIndex;
+                                        return (
+                                            <motion.button
+                                                key={index}
+                                                onClick={() => setSelectedIndex(index)}
+                                                initial={{ opacity: 0, x: 20 }}
+                                                whileInView={{ opacity: 1, x: 0 }}
+                                                viewport={{ once: true }}
+                                                transition={{ duration: 0.4, delay: index * 0.08 }}
+                                                className={`
+                                                    w-full text-left rounded-xl px-4 py-3 transition-all duration-300 cursor-pointer
+                                                    flex items-center gap-3 group border
+                                                    ${isActive
+                                                        ? "bg-primary/10 border-primary/40 shadow-md shadow-primary/5"
+                                                        : "bg-background/60 border-border/50 hover:bg-primary/5 hover:border-primary/20 hover:shadow-sm"
+                                                    }
+                                                `}
+                                            >
+                                                {/* Play icon */}
+                                                <div
+                                                    className={`
+                                                        flex-shrink-0 w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-300
+                                                        ${isActive
+                                                            ? "bg-primary text-primary-foreground shadow-sm"
+                                                            : "bg-muted text-muted-foreground group-hover:bg-primary/20 group-hover:text-primary"
+                                                        }
+                                                    `}
+                                                >
+                                                    <Play className={`w-4 h-4 ${isActive ? "fill-current" : ""}`} />
+                                                </div>
+
+                                                {/* Video info */}
+                                                <div className="min-w-0 flex-1">
+                                                    <p
+                                                        className={`
+                                                            text-sm font-medium leading-snug truncate transition-colors duration-300
+                                                            ${isActive ? "text-primary" : "text-foreground group-hover:text-primary"}
+                                                        `}
+                                                    >
+                                                        {video.title}
+                                                    </p>
+                                                    <p className="text-xs text-muted-foreground mt-0.5">
+                                                        Video {index + 1} of {videos.length}
+                                                    </p>
+                                                </div>
+
+                                                {/* Active indicator bar */}
+                                                {isActive && (
+                                                    <motion.div
+                                                        layoutId="activeVideoIndicator"
+                                                        className="absolute left-0 top-2 bottom-2 w-1 rounded-full bg-primary"
+                                                        transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                                                    />
+                                                )}
+                                            </motion.button>
+                                        );
+                                    })}
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    )}
 
                     <div className="mt-8 text-center px-4">
                         <p className="text-muted-foreground italic text-lg leading-relaxed">

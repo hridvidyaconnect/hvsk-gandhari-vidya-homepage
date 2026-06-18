@@ -241,3 +241,21 @@
   background-size: 200% auto;
   animation: shimmer 3s linear infinite;
 }
+
+/* Testimonials sidebar scrollbar */
+.testimonials-sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.testimonials-sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.testimonials-sidebar::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary) / 0.2);
+  border-radius: 4px;
+}
+
+.testimonials-sidebar::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.4);
+}
