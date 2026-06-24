@@ -33,6 +33,51 @@ function parseCSV(csvText: string): string[][] {
 }
 
 /**
+ * Normalizes different forms of YouTube URLs into a valid embed URL.
+ * Handles:
+ * - Direct embed URLs: https://www.youtube.com/embed/xyz
+ * - Watch URLs: https://www.youtube.com/watch?v=xyz
+ * - Short URLs: https://youtu.be/xyz
+ * - Full iframe strings: <iframe ... src="https://www.youtube.com/embed/xyz"...>
+ */
+function normalizeYouTubeUrl(input: string): string {
+    const trimmed = input.trim();
+    
+    // Check if it's an iframe string
+    if (trimmed.toLowerCase().startsWith('<iframe')) {
+        const srcMatch = trimmed.match(/src=["']([^"']+)["']/);
+        if (srcMatch && srcMatch[1]) {
+            // Recursively normalize the extracted src URL
+            return normalizeYouTubeUrl(srcMatch[1]);
+        }
+    }
+
+    try {
+        const url = new URL(trimmed);
+        
+        // Handle youtu.be/VIDEO_ID
+        if (url.hostname === 'youtu.be') {
+            const videoId = url.pathname.slice(1);
+            return `https://www.youtube.com/embed/${videoId}${url.search}`;
+        }
+        
+        // Handle youtube.com/watch?v=VIDEO_ID
+        if (url.hostname.includes('youtube.com') && url.pathname === '/watch') {
+            const videoId = url.searchParams.get('v');
+            if (videoId) {
+                return `https://www.youtube.com/embed/${videoId}`;
+            }
+        }
+        
+        // If it's already an embed URL or something else, return as is
+        return trimmed;
+    } catch (e) {
+        // If parsing fails, return original input
+        return trimmed;
+    }
+}
+
+/**
  * Fetches testimonial video data from a published Google Sheet CSV tab.
  * Expected columns: Title, Embed URL
  * Returns videos in the sheet's row order.
@@ -74,9 +119,11 @@ async function fetchTestimonialVideos(): Promise<TestimonialVideo[]> {
 
     for (const row of dataRows) {
         const title = row[titleIdx]?.trim();
-        const embedUrl = row[embedUrlIdx]?.trim();
+        const rawEmbedUrl = row[embedUrlIdx]?.trim();
 
-        if (!title || !embedUrl) continue;
+        if (!title || !rawEmbedUrl) continue;
+
+        const embedUrl = normalizeYouTubeUrl(rawEmbedUrl);
 
         videos.push({ title, embedUrl });
     }
@@ -97,9 +144,16 @@ export function useTestimonialVideos() {
         retry: 1,
     });
 
+    // Also normalize the fallback data in case it contains un-normalized URLs
+    const fallbackVideos = testimonialVideosFallback.map(video => ({
+        ...video,
+        embedUrl: normalizeYouTubeUrl(video.embedUrl)
+    }));
+
     return {
-        videos: query.data ?? testimonialVideosFallback,
+        videos: query.data ?? fallbackVideos,
         isLoading: query.isLoading,
         error: query.error,
     };
 }
+
