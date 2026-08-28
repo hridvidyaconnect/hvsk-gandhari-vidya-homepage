@@ -1,5 +1,5 @@
 import { useGoogleSheetsBatches } from "@/hooks/useGoogleSheetsBatches";
-import { Clock, Info } from "lucide-react";
+import { Clock, Info, MapPin } from "lucide-react";
 
 interface BatchInfoProps {
   variant?: "light" | "dark" | "card";
@@ -64,27 +64,41 @@ const BatchInfo = ({ variant = "light", showTitle = true }: BatchInfoProps) => {
                   {batch.name}
                 </span>
 
-                {/* Timings for non-completed batches where available */}
-                {!isCompleted(batch.status) && batch.time && (
-                  <div className={`flex items-center gap-1.5 text-[10px] sm:text-xs ${mutedColor}`}>
-                    <Clock className="w-3 h-3 flex-shrink-0" />
-                    <span className="font-medium">{batch.time}</span>
-                  </div>
-                )}
-
-                {/* Sub-batches: hidden entirely when batch is fully completed, otherwise individual completed ones get greyed out */}
-                {!isCompleted(batch.status) && batch.subBatches && batch.subBatches.length > 0 && (
-                  <div className="mt-3 space-y-2">
-                    {batch.subBatches.map((subBatch, idx) => (
-                      <div key={idx} className={`text-xs p-2 rounded-lg ${subBatch.status === "Completed" ? "opacity-50" : ""} ${variant === 'dark' ? 'bg-primary-foreground/10' : 'bg-background/60 shadow-sm border border-border/50'}`}>
-                        <div className="flex items-center justify-between">
-                          <span className={`font-semibold ${variant === 'dark' ? 'text-primary-foreground' : 'text-foreground'}`}>
-                            {subBatch.dates}
-                          </span>
-                          <span className={`text-[10px] px-1.5 py-0.5 rounded font-medium ${variant === 'dark' ? 'bg-primary-foreground/20 text-primary-foreground' : 'bg-primary/10 text-primary'}`}>
-                            {subBatch.location}
-                          </span>
+                {/* Month sub-sections — only for upcoming batches */}
+                {!isCompleted(batch.status) && batch.monthEntries && batch.monthEntries.length > 0 && (
+                  <div className="mt-2 space-y-2">
+                    {batch.monthEntries.map((entry, idx) => (
+                      <div
+                        key={idx}
+                        className={`text-xs p-2 rounded-lg ${variant === "dark"
+                          ? "bg-primary-foreground/10"
+                          : "bg-background/60 shadow-sm border border-border/50"
+                          }`}
+                      >
+                        {/* Dates + Time on same row, time wraps below if needed */}
+                        <div className="flex flex-wrap items-baseline justify-between gap-x-2 gap-y-1">
+                          {entry.dates && (
+                            <span className={`font-medium ${variant === "dark" ? "text-primary-foreground" : "text-foreground"}`}>
+                              {entry.dates}
+                            </span>
+                          )}
+                          {entry.time && (
+                            <div className={`flex items-center gap-1 flex-shrink-0 ${mutedColor}`}>
+                              <Clock className="w-2.5 h-2.5 flex-shrink-0" />
+                              <span>{entry.time}</span>
+                            </div>
+                          )}
                         </div>
+
+                        {/* Location */}
+                        {entry.location && entry.location !== "TBA" && (
+                          <div className={`flex items-center gap-1 mt-0.5 ${mutedColor}`}>
+                            <MapPin className="w-2.5 h-2.5 flex-shrink-0" />
+                            <span>{entry.location}</span>
+                          </div>
+                        )}
+
+
                       </div>
                     ))}
                   </div>
@@ -114,10 +128,7 @@ const BatchInfo = ({ variant = "light", showTitle = true }: BatchInfoProps) => {
         </div>
       )}
 
-      {/* TBA Note */}
-      <div className={`text-xs text-center mt-3 font-medium ${mutedColor}`}>
-        *TBA - To Be Announced
-      </div>
+
     </div>
   );
 };
